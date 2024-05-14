@@ -13,19 +13,21 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include "libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct node
+typedef struct s_stack
 {
-    int nc;
-    struct node *next;
-    struct node *prev;
-} t_node;
+	int				data;
+	int				index;
+	struct s_stack	*next;
+}					t_stack;
 
-int	ft_atoi(const char *nptr);
-int	ft_isdigit(int c);
-int	ft_isAlldigit(char *str);
-
+t_stack	*ft_nb_new(int nb);
+void	ft_clear_stack(t_stack **lst);
+void	ft_add_back(t_stack **lst, t_stack *new);
+t_stack	*check_args(int ac, char **av);
+int	ft_atoi_plus(char *str);
 #endif

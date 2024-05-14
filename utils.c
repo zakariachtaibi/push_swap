@@ -12,51 +12,43 @@
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *nptr)
+void	ft_clear_stack(t_stack **lst)
 {
-	int	result;
-	int	sign;
-	int	i;
+	t_stack	*tmp;
 
-	result = 0;
-	sign = 1;
-	i = 0;
-	while (nptr[i] == ' ' || nptr[i] == '\t' || nptr[i] == '\n'
-		|| nptr[i] == '\r' || nptr[i] == '\v' || nptr[i] == '\f')
-		i++;
-	if (!nptr[i])
-		exit(1);
-	if (nptr[i] == '-' || (nptr[i] == '+'))
-		if (nptr[i++] == '-')
-			sign *= -1;
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	if (!(*lst))
+		return ;
+	while (*lst)
 	{
-		result *= 10;
-		result += (nptr[i] - '0');
-		i++;
+		tmp = (*lst)->next;
+		free(*lst);
+		*lst = tmp;
 	}
-	return (result * sign);
 }
 
-int	ft_isdigit(int c)
+t_stack	*ft_nb_new(int nb)
 {
-	return ((c >= '0' && c <= '9') || c == ' ');
+	t_stack	*new;
+
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		return (NULL);
+	new->data = nb;
+	new->next = NULL;
+	return (new);
 }
 
-int	ft_isAlldigit(char *str)
+void	ft_add_back(t_stack **lst, t_stack *new)
 {
-	int	i;
+	t_stack	*tmp;
 
-	i = 0;
-	if (!*str)
-		exit(1);
-	while (str[i])
+	if (!(*lst))
+		*lst = new;
+	else
 	{
-        if (str[i] == '-')
-            i++;
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
+		tmp = (*lst);
+		while (tmp && tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
 	}
-	return (1);
 }

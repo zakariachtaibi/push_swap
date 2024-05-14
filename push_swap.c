@@ -12,33 +12,36 @@
 
 #include "push_swap.h"
 
-void	ft_check_args(char **av)
+int	is_stack_sorted(t_stack *stack)
 {
-	int	i;
-	int	arg;
+	t_stack	*tmp;
 
-	i = 1;
-	arg = 0;
-	while (av[i])
+	tmp = stack;
+	while (tmp && tmp->next)
 	{
-		if (!ft_isAlldigit(av[i]))
-		{
-			printf("invalid number\n");
-			exit(1);
-		}
-		arg = ft_atoi(av[i]);
-		printf("%d\n", arg);
-		i++;
+		if (tmp->data > tmp->next->data)
+			return (0);
+		tmp = tmp->next;
 	}
+	return (1);
 }
 
 int	main(int ac, char **av)
 {
-	if (ac < 2)
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	stack_b = NULL;
+	if (ac >= 2)
 	{
-		write(1, "please enter a number\n", 24);
-		exit(1);
+		stack_a = check_args(ac, av);
+		if (is_stack_sorted(stack_a) == 1)
+		{
+			ft_clear_stack(&stack_a);
+			return (0);
+		}
 	}
-	ft_check_args(av);
+	else
+		ft_putstr_fd("Error\n", 2);
 	return (0);
 }
