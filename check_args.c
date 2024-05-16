@@ -1,123 +1,90 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 14:52:51 by zchtaibi          #+#    #+#             */
-/*   Updated: 2024/05/15 16:50:53 by zchtaibi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
-int	check_digits(int ac, char **av)
+int ft_push(t_stack **stack, int value)
 {
-	int	i;
-	int	j;
+    t_stack *new_element;
 
-	i = 1;
-	while (i < ac)
-	{
-		j = 0;
-		while (av[i][j])
-		{
-			if (av[i][j] != ' ' && av[i][j] != '+' && av[i][j] != '-'
-				&& ft_isdigit(av[i][j]) == 0)
-			{
-				ft_putstr_fd("Error\n", 2);
-				exit(1);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (1);
+    new_element = (t_stack *)malloc(sizeof(t_stack));
+    if (!new_element)
+        return (0);
+
+    new_element->data = value;
+
+    if (!(*stack))
+    {
+        new_element->next = NULL;
+        *stack = new_element;
+    }
+    else
+    {
+        new_element->next = *stack;
+        *stack = new_element;
+    }
+
+    return (1);
 }
 
-void	free_2d_array(char **array)
+t_stack *ft_check_double(t_stack *stack, int value)
 {
-	int	i;
+    t_stack *index;
+    t_stack *temp;
 
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
+    temp = NULL;
+    if (!stack)
+        return NULL;
+    index = stack;
+    while (index)
+    {
+        if (index->data == value)
+            return index;
+        if (!index->next)
+            temp = index;
+        index = index->next;
+    }
+    if (value == -1)
+        return temp;
+
+    return NULL;
 }
 
-int	check_duplicates(t_stack *stack_a)
+static int ft_isdigits(char *word)
 {
-	t_stack	*tmp;
-	t_stack	*tmp2;
+    size_t length;
+    size_t index;
 
-	tmp = stack_a;
-	while (tmp)
-	{
-		tmp2 = tmp->next;
-		while (tmp2)
-		{
-			if (tmp->data == tmp2->data)
-				return (1);
-			tmp2 = tmp2->next;
-		}
-		tmp = tmp->next;
-	}
-	return (0);
+    if (!word)
+        return (0);
+    length = ft_strlen(word);
+    index = 0;
+    while (index < length)
+    {
+        if (!ft_isdigit(word[index]))
+            return (0);
+        index++;
+    }
+    return (1);
 }
 
-void	arg_check(char *str, t_stack **a)
+int ft_fill_stack(t_stack **stack, char **elements)
 {
-	int		j;
-	char	**tmp;
+    int index;
+    int value;
 
-	if (ft_strlen(str) == 0)
-	{
-		ft_putstr_fd("Error\n", 2);
-		ft_clear_stack(a);
-		exit(1);
-	}
-	tmp = ft_split(str, ' ');
-	j = 0;
-	while (tmp[j])
-	{
-		if (ft_atoi_plus(tmp[j]) == 0 || ft_strncmp(tmp[j], "+", 2) == 0
-			|| ft_strncmp(tmp[j], "-", 2) == 0)
-		{
-			ft_putstr_fd("Error\n", 2);
-			free_2d_array(tmp);
-			ft_clear_stack(a);
-			exit(1);
-		}
-		ft_add_back(a, ft_nb_new(ft_atoi(tmp[j])));
-		j++;
-	}
-	free_2d_array(tmp);
-}
-
-t_stack	*check_args(int ac, char **av)
-{
-	t_stack	*stack_a;
-	int		i;
-
-	stack_a = NULL;
-	if (check_digits(ac, av))
-	{
-		i = 1;
-		while (i < ac)
-		{
-			arg_check(av[i], &stack_a);
-			i++;
-		}
-	}
-	if (check_duplicates(stack_a))
-	{
-		ft_putstr_fd("Error\n", 2);
-		ft_clear_stack(&stack_a);
-		exit(1);
-	}
-	return (stack_a);
+    index = 0;
+    while (elements[index])
+        index++;
+    while (--index >= 0)
+    {
+        if (!ft_isdigits(elements[index]))
+            return (0);
+        value = ft_atoi(elements[index]);
+        if (ft_check_double(*stack, value))
+            return (0);
+        ft_push(stack, value);
+    }
+    index = -1;
+    while (elements[++index])
+        free(elements[index]);
+    free(elements);
+    return (1);
 }

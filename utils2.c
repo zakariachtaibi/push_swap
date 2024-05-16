@@ -12,26 +12,6 @@
 
 #include "push_swap.h"
 
-void index_stack(t_stack *stack)
-{
-    t_stack	*tmp;
-    int		index;
-    int     *arr;
-
-    tmp = stack;
-    index = 0;
-    arr = (int *)malloc(sizeof(int) * ft_lstsize(stack));
-    if (!arr)
-        return ;
-    while (tmp)
-    {
-        arr[index] = tmp->data;
-        tmp = tmp->next;
-        index++;
-    }
-    ft_sort_int_tab(arr, ft_lstsize(stack));
-}
-
 void ft_sort_int_tab(int *tab, int size)
 {
     int i;
@@ -56,7 +36,28 @@ void ft_sort_int_tab(int *tab, int size)
     }
 }
 
-index_it(t_stack stack_a)
+void index_stack(t_stack *stack)
 {
-    
+    t_stack *tmp = stack;
+    int index = 0;
+    int *arr;
+
+    arr = (int *)malloc(sizeof(int) * ft_stack_size(stack));
+    if (!arr)
+    {
+        return;
+    }
+    while (tmp)
+    {
+        arr[index] = tmp->data;
+        tmp = tmp->next;
+        index++;
+    }
+    ft_sort_int_tab(arr, ft_stack_size(stack));
+    free(arr);
 }
+
+// index_it(t_stack stack_a)
+// {
+    
+// }

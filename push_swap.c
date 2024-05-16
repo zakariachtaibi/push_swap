@@ -26,25 +26,36 @@ int	is_stack_sorted(t_stack *stack)
 	return (1);
 }
 
+void printNode(t_stack *node)
+{
+    while (node)
+    {
+        printf(" %d ->", node->data);
+        node = node->next;
+    }
+    printf("null\n");
+}
+
 int	main(int ac, char **av)
 {
 	t_stack *stack_a;
-	t_stack *stack_b;
+	// t_stack *stack_b;
 
-	stack_b = NULL;
+	// stack_b = NULL;
+	stack_a = NULL;
 	if (ac >= 2)
 	{
-		stack_a = check_args(ac, av);
+		while (--ac > 0)
+			if (!ft_fill_stack(&stack_a, ft_split(av[ac], ' ')))
+				exit (0);
+		printNode(stack_a);
 		if (is_stack_sorted(stack_a) == 1)
 		{
 			ft_clear_stack(&stack_a);
-			return (0);
+			printf("Stack is sorted\n");
+			exit (0);
 		}
-		index_stack(stack_a);
-		index_it(stack_a);
-
+		
 	}
-	else
-		ft_putstr_fd("Error\n", 2);
 	return (0);
 }
