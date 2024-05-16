@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-rhay <mel-rhay@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 12:35:22 by mel-rhay          #+#    #+#             */
-/*   Updated: 2023/11/24 12:35:22 by mel-rhay         ###   ########.fr       */
+/*   Created: 2023/11/11 15:14:06 by zchtaibi          #+#    #+#             */
+/*   Updated: 2023/11/17 17:36:27 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while (lst && lst->next)
-		lst = lst->next;
-	return (lst);
+	t_list	*current;
+
+	current = lst;
+	if (!lst)
+		return (NULL);
+	while (current->next != NULL)
+	{
+		current = current->next;
+	}
+	return (current);
 }

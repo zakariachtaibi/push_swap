@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-rhay <mel-rhay@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 12:36:27 by mel-rhay          #+#    #+#             */
-/*   Updated: 2023/11/24 21:29:39 by mel-rhay         ###   ########.fr       */
+/*   Created: 2023/11/02 16:26:31 by zchtaibi          #+#    #+#             */
+/*   Updated: 2023/11/05 16:18:05 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,21 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*source;
-	char	*destination;
+	unsigned char	*s;
+	unsigned char	*d;
 
-	source = (char *)src;
-	destination = (char *)dest;
-	if (source == destination)
-		return ((void *)destination);
-	if (!source && !destination)
+	s = (unsigned char *)src;
+	d = (unsigned char *)dest;
+	if (!dest && !src)
 		return (NULL);
-	if (destination < source || destination > source + n)
+	if (d > s)
 	{
-		ft_memcpy(destination, source, n);
+		while (n-- > 0)
+			d[n] = s[n];
 	}
 	else
 	{
-		while (n-- > 0)
-			destination[n] = source[n];
+		ft_memcpy(d, s, n);
 	}
-	return ((void *)destination);
+	return (dest);
 }

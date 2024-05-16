@@ -6,7 +6,7 @@
 /*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 18:38:07 by zchtaibi          #+#    #+#             */
-/*   Updated: 2024/05/10 14:50:29 by zchtaibi         ###   ########.fr       */
+/*   Updated: 2024/05/16 09:55:23 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-t_stack	*ft_nb_new(int nb);
-void	ft_clear_stack(t_stack **lst);
-void	ft_add_back(t_stack **lst, t_stack *new);
-t_stack	*check_args(int ac, char **av);
-int	ft_atoi_plus(char *str);
+t_stack				*ft_nb_new(int nb);
+void				ft_clear_stack(t_stack **lst);
+void				ft_add_back(t_stack **lst, t_stack *new);
+t_stack				*check_args(int ac, char **av);
+int					ft_atoi_plus(char *str);
+void	index_stack(t_stack *stack)
 #endif

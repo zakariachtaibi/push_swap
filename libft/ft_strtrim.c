@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-rhay <mel-rhay@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 12:39:47 by mel-rhay          #+#    #+#             */
-/*   Updated: 2023/11/24 12:39:47 by mel-rhay         ###   ########.fr       */
+/*   Created: 2023/11/06 15:48:31 by zchtaibi          #+#    #+#             */
+/*   Updated: 2023/11/17 17:46:39 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_set(const char c, const char *set)
+static int	strcontains(int c, char const *set)
 {
 	int	i;
 
@@ -28,29 +28,24 @@ static int	is_set(const char c, const char *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	sindex;
-	size_t	eindex;
-	size_t	j;
-	char	*str;
+	size_t	start;
+	size_t	end;
+	size_t	i;
+	char	*chaine;
 
-	if (!s1)
+	start = 0;
+	end = 0;
+	i = 0;
+	if (s1 == 0 || set == 0)
 		return (NULL);
-	else if (!set)
-		return ((char *)s1);
-	sindex = 0;
-	while (s1[sindex] && is_set(s1[sindex], set))
-		sindex++;
-	eindex = ft_strlen(s1);
-	while (sindex < eindex && is_set(s1[eindex - 1], set))
-		eindex--;
-	str = (char *)malloc((eindex - sindex + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	j = 0;
-	while (sindex < eindex)
-	{
-		str[j++] = s1[sindex++];
-	}
-	str[j] = '\0';
-	return (str);
+	while (s1[i] && strcontains(s1[i++], set))
+		start++;
+	i = 0;
+	end = ft_strlen(s1);
+	while (s1[i++] && strcontains(s1[end - 1], set) && end > start)
+		end--;
+	chaine = (char *)malloc(end - start + 1);
+	if (chaine != NULL)
+		ft_strlcpy(chaine, s1 + start, end - start + 1);
+	return (chaine);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-rhay <mel-rhay@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 12:38:39 by mel-rhay          #+#    #+#             */
-/*   Updated: 2023/11/24 12:38:40 by mel-rhay         ###   ########.fr       */
+/*   Created: 2023/11/03 12:54:55 by zchtaibi          #+#    #+#             */
+/*   Updated: 2023/11/11 16:32:54 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,17 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	i;
-	size_t	j;
+	size_t	src_len;
+	size_t	copy_len;
 
-	i = 0;
-	while (src[i] != '\0')
+	src_len = ft_strlen(src);
+	if (size > 0)
 	{
-		i++;
+		copy_len = size - 1;
+		if (src_len < copy_len)
+			copy_len = src_len;
+		ft_memcpy(dst, src, copy_len);
+		dst[copy_len] = '\0';
 	}
-	if (size < 1)
-		return (i);
-	j = 0;
-	while (j < size - 1 && src[j] != '\0')
-	{
-		dst[j] = src[j];
-		j++;
-	}
-	dst[j] = '\0';
-	return (i);
+	return (src_len);
 }

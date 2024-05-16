@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-rhay <mel-rhay@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 12:40:18 by mel-rhay          #+#    #+#             */
-/*   Updated: 2023/11/24 12:40:19 by mel-rhay         ###   ########.fr       */
+/*   Created: 2023/11/03 18:51:37 by zchtaibi          #+#    #+#             */
+/*   Updated: 2023/11/03 18:52:48 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_toupper(int c)
 {
-	if (c >= 'a' && c <= 'z')
+	if (c >= 0141 && c <= 0172)
 		return (c - 32);
-	return (c);
+	else
+		return (c);
 }

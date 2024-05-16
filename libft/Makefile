@@ -1,37 +1,77 @@
-SRCS =  ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c \
-	   ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c \
-	   ft_memcpy.c ft_memmove.c ft_memset.c ft_memcmp.c ft_memchr.c ft_bzero.c \
-	   ft_strnstr.c ft_strlcpy.c ft_strlcat.c ft_atoi.c ft_strdup.c ft_calloc.c \
-	   ft_substr.c ft_strjoin.c ft_split.c ft_itoa.c ft_strmapi.c \
-	   ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
-	   ft_putnbr_fd.c ft_strtrim.c  ft_striteri.c 
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/11/02 16:25:01 by zchtaibi          #+#    #+#              #
+#    Updated: 2023/11/20 20:06:51 by zchtaibi         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-Objects = ${SRCS:.c=.o}
+NAME	= libft.a
 
-BONUS = ft_lstnew_bonus.c ft_lstlast_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstadd_back_bonus.c ft_lstclear_bonus.c\
-		ft_lstdelone_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
+DEPS	= libft.h
 
-BonusObjt = ${BONUS:.c=.o}
+CC	= gcc
 
-NAME = libft.a
+CFLAGS	= -Wall -Werror -Wextra -include $(DEPS)
 
-CFLAGS = -Wall -Wextra -Werror
+ARCHIVE	= ar -rcs
 
-all : ${Objects} ${NAME}
+SRCS	=    ft_bzero.c  ft_isalnum.c\
+			 ft_isalpha.c ft_isascii.c\
+			 ft_isdigit.c ft_isprint.c\
+			 ft_memset.c  ft_strlen.c\
+			 ft_memcpy.c ft_strlcpy.c\
+			 ft_strlcat.c ft_toupper.c\
+			 ft_tolower.c ft_strchr.c\
+			 ft_strncmp.c ft_memchr.c\
+			 ft_strrchr.c ft_memcmp.c\
+			 ft_memmove.c ft_substr.c\
+			 ft_strnstr.c ft_calloc.c\
+			 ft_strdup.c ft_atoi.c\
+			 ft_strjoin.c ft_putchar_fd.c\
+			 ft_putstr_fd.c ft_putendl_fd.c\
+			 ft_itoa.c ft_split.c\
+			 ft_putnbr_fd.c ft_strmapi.c\
+			 ft_striteri.c ft_strtrim.c\
 
-${NAME} : ${Objects} 
-	ar rc ${NAME} ${Objects}
 
-${BonusObjt}: ${BONUS}
-	$(CC) ${CFLAGS} -c ${BONUS}
-	ar rc ${NAME} ${BonusObjt}
+OBJS	= $(SRCS:.c=.o)
 
-bonus : ${BonusObjt}
 
-clean :
-	rm -f ${Objects} ${BonusObjt}
+B_SRCS	=	ft_lstlast.c ft_lstadd_back.c\
+			ft_lstadd_front.c ft_lstnew.c\
+			ft_lstsize.c ft_lstdelone.c\
+			ft_lstclear.c ft_lstiter.c\
+			ft_lstmap.c\
 
-fclean : clean
-	rm -f ${NAME}
 
-re : fclean all
+B_OBJS	= $(B_SRCS:.c=.o)
+
+
+all: $(NAME)
+
+$(NAME): $(OBJS) $(DEPS)
+	$(ARCHIVE) $(NAME) $(OBJS)
+
+clean:
+	rm -rf $(OBJS) $(B_OBJS)
+
+fclean: clean
+	rm -rf $(NAME)
+	
+$(B_OBJS) : ${B_SRCS}
+	${CC} ${CFLAGS} -c ${B_SRCS}
+	$(ARCHIVE) $(NAME) $(B_OBJS)
+	
+bonus: $(B_OBJS) 
+
+
+rebonus: fclean bonus
+
+re: fclean all
+
+.PHONY: all clean fclean re

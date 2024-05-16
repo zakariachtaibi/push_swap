@@ -3,89 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-rhay <mel-rhay@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 12:34:17 by mel-rhay          #+#    #+#             */
-/*   Updated: 2023/11/24 12:55:07 by mel-rhay         ###   ########.fr       */
+/*   Created: 2023/11/07 18:43:32 by zchtaibi          #+#    #+#             */
+/*   Updated: 2023/11/17 17:33:59 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_int_lenght(int c)
+static int	deg(int n)
 {
-	int	i;
+	int	l;
 
-	i = 0;
-	if (c < 0)
-		c = -c;
-	while (c > 0)
+	l = 0;
+	if (n < 0)
+		l = 1;
+	while (n)
 	{
-		c /= 10;
-		i++;
+		n = n / 10;
+		l++;
 	}
-	return (i);
-}
-
-static void	ft_itoa_putnumbers(int i, char *table, int n)
-{
-	table[i--] = '\0';
-	while (i >= 0 && table[i] != '-')
-	{
-		table[i--] = n % 10 + '0';
-		n /= 10;
-	}
-}
-
-static char	*ft_is_zero(void)
-{
-	char	*table;
-
-	table = (char *)malloc(2 * sizeof(char));
-	if (!table)
-		return (NULL);
-	table[0] = '0';
-	table[1] = '\0';
-	return (table);
-}
-
-static char	*ft_is_min_int(void)
-{
-	char	*table;
-
-	table = (char *)malloc(12 * sizeof(char));
-	if (!table)
-		return (NULL);
-	ft_memcpy(table, "-2147483648", 11);
-	table[11] = '\0';
-	return (table);
+	return (l);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*table;
-	int		lenght;
+	char	*p;
+	int		l;
 
+	if (n == 0)
+		return (ft_strdup("0"));
 	if (n == -2147483648)
-		return (ft_is_min_int());
-	else if (n == 0)
-		return (ft_is_zero());
-	else
+		return (ft_strdup("-2147483648"));
+	l = deg(n);
+	p = malloc(l + 1);
+	if (!p)
+		return (0);
+	if (n < 0)
 	{
-		lenght = ft_int_lenght(n);
-		if (n < 0)
-		{
-			n = -n;
-			table = (char *)malloc(((lenght++) + 2) * sizeof(char));
-			if (!table)
-				return (NULL);
-			table[0] = '-';
-		}
-		else
-			table = (char *)malloc((lenght + 1) * sizeof(char));
-		if (!table)
-			return (NULL);
-		ft_itoa_putnumbers(lenght, table, n);
+		n *= -1;
+		p[0] = '-';
 	}
-	return (table);
+	p[l--] = '\0';
+	while (n)
+	{
+		p[l] = (n % 10) + 48;
+		n = n / 10;
+		l--;
+	}
+	return (p);
 }

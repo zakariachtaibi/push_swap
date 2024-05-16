@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-rhay <mel-rhay@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 12:40:00 by mel-rhay          #+#    #+#             */
-/*   Updated: 2023/11/24 12:40:00 by mel-rhay         ###   ########.fr       */
+/*   Created: 2023/11/05 14:14:31 by zchtaibi          #+#    #+#             */
+/*   Updated: 2023/11/17 17:38:59 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t			i;
-	unsigned int	lenght;
-	char			*str;
+	char	*chaine;
+	size_t	length;
+	size_t	i;
 
-	if (!s)
-		return (NULL);
-	lenght = ft_strlen(s);
-	if (len == 0 || start >= lenght)
-		return ((char *)ft_calloc(1, sizeof(char)));
-	if (start + len > lenght)
-		len = lenght - start;
-	str = (char *)malloc((len + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
+	length = ft_strlen(s);
 	i = 0;
-	while (i < len)
+	if (s == NULL || start >= length)
+		return (ft_strdup(""));
+	if (len > (length - start))
+		len = length - start;
+	chaine = (char *)malloc((len) + 1);
+	if (!chaine)
+		return (NULL);
+	while ((i + start) < length && i < len)
 	{
-		str[i] = (char)s[i + start];
+		chaine[i] = s[i + start];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	chaine[i] = 0;
+	return (chaine);
 }

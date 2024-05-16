@@ -5,92 +5,58 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/10 15:00:13 by zchtaibi          #+#    #+#             */
-/*   Updated: 2024/05/10 15:01:16 by zchtaibi         ###   ########.fr       */
+/*   Created: 2024/05/16 09:45:35 by zchtaibi          #+#    #+#             */
+/*   Updated: 2024/05/16 09:59:11 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	count_elements(char const *s, char c)
+void index_stack(t_stack *stack)
 {
-	size_t	count;
+    t_stack	*tmp;
+    int		index;
+    int     *arr;
 
-	count = 0;
-	while (*s)
-	{
-		while (*s && *s == c)
-			s++;
-		if (*s)
-		{
-			count++;
-			while (*s && *s != c)
-				s++;
-		}
-	}
-	return (count);
+    tmp = stack;
+    index = 0;
+    arr = (int *)malloc(sizeof(int) * ft_lstsize(stack));
+    if (!arr)
+        return ;
+    while (tmp)
+    {
+        arr[index] = tmp->data;
+        tmp = tmp->next;
+        index++;
+    }
+    ft_sort_int_tab(arr, ft_lstsize(stack));
 }
 
-static char	*allocate(char const *s, char c)
+void ft_sort_int_tab(int *tab, int size)
 {
-	char	*word;
-	size_t	i;
-	size_t	len;
+    int i;
+    int j;
+    int tmp;
 
-	i = 0;
-	len = 0;
-	while (s[len] && s[len] != c)
-		len++;
-	word = malloc(len + 1);
-	if (!word)
-		return (0);
-	while (i < len)
-	{
-		word[i] = s[i];
-		i++;
-	}
-	word[i] = '\0';
-	return (word);
+    i = 0;
+    while (i < size)
+    {
+        j = i + 1;
+        while (j < size)
+        {
+            if (tab[i] > tab[j])
+            {
+                tmp = tab[i];
+                tab[i] = tab[j];
+                tab[j] = tmp;
+            }
+            j++;
+        }
+        i++;
+    }
 }
 
-static void	*free_split(char **str, size_t *j)
+index_it(t_stack stack_a)
 {
-	size_t	k;
-
-	k = 0;
-	while (k < *j)
-	{
-		free(str[k]);
-		k++;
-	}
-	free(str);
-	return (NULL);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**str;
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	str = malloc(sizeof(char *) * (count_elements(s, c) + 1));
-	if (!str)
-		return (NULL);
-	while (s[i])
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		if (s[i])
-		{
-			str[j] = allocate(&s[i], c);
-			if (!str[j++])
-				return (free_split(str, &j));
-		}
-		while (s[i] && s[i] != c)
-			i++;
-	}
-	str[j] = 0;
-	return (str);
+    
 }
