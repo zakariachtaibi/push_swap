@@ -17,7 +17,7 @@ FLAGS    := -Wall -Wextra -Werror
 SRCS        :=       push_swap.c \
                           check_args.c \
                           index_stack.c \
-                          utils1.c \
+                          utils.c \
 						   libft/ft_atoi.c \
                           libft/ft_isdigit.c \
                           libft/ft_putchar_fd.c \
@@ -36,8 +36,16 @@ SRCS        :=       push_swap.c \
                           operations/sa.c \
                             operations/sb.c \
                             operations/ss.c \
-
-
+                            operations/pa.c \
+                            operations/pb.c \
+                            operations/ra.c \
+                            operations/rb.c \
+                            operations/rr.c \
+                            operations/rra.c \
+                            operations/rrb.c \
+                            operations/rrr.c \
+                            sort.c \
+                            sort_utils.c \
                           
 OBJS        := $(SRCS:.c=.o)
 

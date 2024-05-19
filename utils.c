@@ -25,42 +25,14 @@ int	ft_stack_size(t_stack *stack)
 	return (num);
 }
 
-void ft_clear_stack(t_stack_container *stack_container)
+void ft_clear_stack(t_stack_data *stack)
 {
     t_stack *temp;
-    while (stack_container->head)
+    while (stack->head)
     {
-        temp = stack_container->head;
-        stack_container->head = stack_container->head->next;
+        temp = stack->head;
+        stack->head = stack->head->next;
         free(temp);
     }
-    stack_container->size = 0;
-}
-
-
-t_stack	*ft_nb_new(int nb)
-{
-	t_stack	*new;
-
-	new = malloc(sizeof(t_stack));
-	if (!new)
-		return (NULL);
-	new->data = nb;
-	new->next = NULL;
-	return (new);
-}
-
-void	ft_add_back(t_stack **lst, t_stack *new)
-{
-	t_stack	*tmp;
-
-	if (!(*lst))
-		*lst = new;
-	else
-	{
-		tmp = (*lst);
-		while (tmp && tmp->next)
-			tmp = tmp->next;
-		tmp->next = new;
-	}
+    stack->size = 0;
 }

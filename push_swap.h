@@ -25,26 +25,35 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-typedef struct s_stack_container
+typedef struct s_stack_data
 {
     t_stack *head;
     int     size;
-}               t_stack_container;
+}               t_stack_data;
 
 int	ft_stack_size(t_stack *stack);
-int ft_push(t_stack_container *stack_container, int value);
-t_stack *ft_fetch(t_stack_container *stack_container, int value);
-int ft_fill_stack(t_stack_container *stack_container, char **elements);
-void ft_clear_stack(t_stack_container *stack_container);
+int ft_push(t_stack_data *stack, int value);
+t_stack *ft_fetch(t_stack_data *stack, int value);
+int ft_fill_stack(t_stack_data *stack, char **elements);
+void ft_clear_stack(t_stack_data *stack);
 int is_stack_sorted(t_stack *stack);
-void printNode(t_stack_container *stack_container);
+void printNode(t_stack_data *stack);
 void index_stack(t_stack *stack);
 
 //operations
-void sa(t_stack_container *stack_a);
-void sb(t_stack_container *stack_b);
-void ss(t_stack_container *stack_a, t_stack_container *stack_b);
-// void pa(t_stack_container *stack_a, t_stack_container *stack_b);
-// void pb(t_stack_container *stack_a, t_stack_container *stack_b);
-// void ra(t_stack_container *stack_a);
+void sa(t_stack_data *stack_a);
+void sb(t_stack_data *stack_b);
+void ss(t_stack_data *stack_a, t_stack_data *stack_b);
+void pa(t_stack_data *stack_a, t_stack_data *stack_b);
+void pb(t_stack_data *stack_a, t_stack_data *stack_b);
+void ra(t_stack_data *stack_a);
+void rb(t_stack_data *stack_b);
+void rr(t_stack_data *stack_a, t_stack_data *stack_b);
+void rra(t_stack_data *stack_a);
+void rrb(t_stack_data *stack_b);
+void rrr(t_stack_data *stack_a, t_stack_data *stack_b);
+
+//sort
+void  sort(t_stack_data *stack);
+void sort_three(t_stack_data *stack);
 #endif
