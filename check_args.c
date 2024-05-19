@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_args.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/19 23:42:34 by zchtaibi          #+#    #+#             */
+/*   Updated: 2024/05/19 23:42:34 by zchtaibi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int ft_push(t_stack_data *stack, int value)
@@ -16,7 +28,6 @@ int ft_push(t_stack_data *stack, int value)
     return (1);
 }
 
-
 t_stack *ft_fetch(t_stack_data *stack, int value)
 {
     t_stack *current = stack->head;
@@ -29,8 +40,6 @@ t_stack *ft_fetch(t_stack_data *stack, int value)
     }
     return NULL;
 }
-
-
 
 static int ft_isdigits(char *word)
 {
