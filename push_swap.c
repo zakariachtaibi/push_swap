@@ -57,6 +57,9 @@ int main(int ac, char **av)
         }
         index_stack(stack_container.head);
         printNode(&stack_container);
+		sb(&stack_container);
+		printNode(&stack_container);
+		ft_clear_stack(&stack_container);
     }
     return (0);
 }

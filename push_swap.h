@@ -39,4 +39,12 @@ void ft_clear_stack(t_stack_container *stack_container);
 int is_stack_sorted(t_stack *stack);
 void printNode(t_stack_container *stack_container);
 void index_stack(t_stack *stack);
+
+//operations
+void sa(t_stack_container *stack_a);
+void sb(t_stack_container *stack_b);
+void ss(t_stack_container *stack_a, t_stack_container *stack_b);
+// void pa(t_stack_container *stack_a, t_stack_container *stack_b);
+// void pb(t_stack_container *stack_a, t_stack_container *stack_b);
+// void ra(t_stack_container *stack_a);
 #endif

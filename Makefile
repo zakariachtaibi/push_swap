@@ -33,6 +33,9 @@ SRCS        :=       push_swap.c \
 						  libft/ft_memcpy.c \
 						  libft/ft_strlcat.c \
 						  libft/ft_memset.c \
+                          operations/sa.c \
+                            operations/sb.c \
+                            operations/ss.c \
 
 
                           

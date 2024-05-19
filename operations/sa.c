@@ -1,12 +1,12 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void swap_a(int *stack_a, int size_a) {
-    if (size_a < 2) {
-        // Not enough elements to swap
+void sa(t_stack_container *stack_a)
+{
+    if (stack_a->size < 2)
         return;
-    }
-    
-    int temp = stack_a[0];
-    stack_a[0] = stack_a[1];
-    stack_a[1] = temp;
+    t_stack *first = stack_a->head;
+    t_stack *second = first->next;
+    first->next = second->next;
+    second->next = first;
+    stack_a->head = second;
 }
