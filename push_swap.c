@@ -64,7 +64,7 @@ int main(int ac, char **av)
         // rra(&stack);
 		// printNode(&stack);
         sort(&stack);
-        // printNode(&stack);
+        printNode(&stack);
 		ft_clear_stack(&stack);
     }
     return (0);
