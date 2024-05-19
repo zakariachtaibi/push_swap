@@ -16,7 +16,7 @@ FLAGS    := -Wall -Wextra -Werror
 
 SRCS        :=       push_swap.c \
                           check_args.c \
-                          utils2.c \
+                          index_stack.c \
                           utils1.c \
 						   libft/ft_atoi.c \
                           libft/ft_isdigit.c \

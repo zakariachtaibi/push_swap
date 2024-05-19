@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void ft_sort_int_tab(int *tab, int size)
+void ft_sort_arr(int *arr, int size)
 {
     int i;
     int j;
@@ -24,11 +24,11 @@ void ft_sort_int_tab(int *tab, int size)
         j = i + 1;
         while (j < size)
         {
-            if (tab[i] > tab[j])
+            if (arr[i] > arr[j])
             {
-                tmp = tab[i];
-                tab[i] = tab[j];
-                tab[j] = tmp;
+                tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
             }
             j++;
         }
@@ -36,28 +36,45 @@ void ft_sort_int_tab(int *tab, int size)
     }
 }
 
+void index_it(t_stack *stack, int *arr, int size)
+{
+    t_stack *tmp;
+    int i;
+
+    tmp = stack;
+    while (tmp)
+    {
+        i = 0;
+        while (i < size)
+        {
+            if (tmp->data == arr[i])
+            {
+                tmp->index = i;
+                break;
+            }
+            i++;
+        }
+        tmp = tmp->next;
+    }
+}
+
 void index_stack(t_stack *stack)
 {
     t_stack *tmp = stack;
-    int index = 0;
+    int index;
     int *arr;
 
+    index = 0;
     arr = (int *)malloc(sizeof(int) * ft_stack_size(stack));
     if (!arr)
-    {
         return;
-    }
     while (tmp)
     {
         arr[index] = tmp->data;
         tmp = tmp->next;
         index++;
     }
-    ft_sort_int_tab(arr, ft_stack_size(stack));
+    ft_sort_arr(arr, ft_stack_size(stack));
+    index_it(stack, arr, ft_stack_size(stack));
     free(arr);
 }
-
-// index_it(t_stack stack_a)
-// {
-    
-// }

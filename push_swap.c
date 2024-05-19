@@ -26,36 +26,37 @@ int	is_stack_sorted(t_stack *stack)
 	return (1);
 }
 
-void printNode(t_stack *node)
+void printNode(t_stack_container *stack_container)
 {
+    t_stack *node = stack_container->head;
     while (node)
     {
-        printf(" %d ->", node->data);
+        printf("value: %d, index: %d\n", node->data, node->index);
         node = node->next;
     }
+    printf("size: %d\n", stack_container->size);
     printf("null\n");
 }
 
-int	main(int ac, char **av)
-{
-	t_stack *stack_a;
-	// t_stack *stack_b;
 
-	// stack_b = NULL;
-	stack_a = NULL;
-	if (ac >= 2)
-	{
-		while (--ac > 0)
-			if (!ft_fill_stack(&stack_a, ft_split(av[ac], ' ')))
-				exit (0);
-		printNode(stack_a);
-		if (is_stack_sorted(stack_a) == 1)
-		{
-			ft_clear_stack(&stack_a);
-			printf("Stack is sorted\n");
-			exit (0);
-		}
-		
-	}
-	return (0);
+int main(int ac, char **av)
+{
+    t_stack_container stack_container = {NULL, 0};
+
+    if (ac >= 2)
+    {
+        while (--ac > 0)
+        {
+            if (!ft_fill_stack(&stack_container, ft_split(av[ac], ' ')))
+                exit(0);
+        }
+        if (is_stack_sorted(stack_container.head))
+        {
+            ft_clear_stack(&stack_container);
+            exit(0);
+        }
+        index_stack(stack_container.head);
+        printNode(&stack_container);
+    }
+    return (0);
 }

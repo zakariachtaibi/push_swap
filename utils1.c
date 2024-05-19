@@ -25,19 +25,18 @@ int	ft_stack_size(t_stack *stack)
 	return (num);
 }
 
-void	ft_clear_stack(t_stack **lst)
+void ft_clear_stack(t_stack_container *stack_container)
 {
-	t_stack	*tmp;
-
-	if (!(*lst))
-		return ;
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		free(*lst);
-		*lst = tmp;
-	}
+    t_stack *temp;
+    while (stack_container->head)
+    {
+        temp = stack_container->head;
+        stack_container->head = stack_container->head->next;
+        free(temp);
+    }
+    stack_container->size = 0;
 }
+
 
 t_stack	*ft_nb_new(int nb)
 {
