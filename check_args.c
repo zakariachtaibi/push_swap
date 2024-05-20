@@ -12,6 +12,12 @@
 
 #include "push_swap.h"
 
+void ft_error(char *message)
+{
+    write(1, message, ft_strlen(message));
+    exit(1);
+}
+
 int ft_push(t_stack_data *stack, int value)
 {
     t_stack *new_element;
@@ -53,7 +59,7 @@ static int ft_isdigits(char *word)
     while (index < length)
     {
         if (!ft_isdigit(word[index]))
-            return (0);
+            ft_error("Error\n");
         index++;
     }
     return (1);
@@ -70,9 +76,9 @@ int ft_fill_stack(t_stack_data *stack, char **elements)
     {
         if (!ft_isdigits(elements[index]))
             return (0);
-        value = atoi(elements[index]);
+        value = ft_atoi(elements[index]);
         if (ft_fetch(stack, value))
-            return (0);
+            ft_error("Error\n");
         if (!ft_push(stack, value))
             return (0);
     }
