@@ -32,6 +32,7 @@ typedef struct s_stack_data
 }               t_stack_data;
 
 int	ft_stack_size(t_stack *stack);
+t_stack_data *init_stack_data(void);
 int ft_push(t_stack_data *stack, int value);
 t_stack *ft_fetch(t_stack_data *stack, int value);
 int ft_fill_stack(t_stack_data *stack, char **elements);
@@ -56,4 +57,6 @@ void rrr(t_stack_data *stack_a, t_stack_data *stack_b);
 //sort
 void  sort(t_stack_data *stack);
 void sort_three(t_stack_data *stack);
+void sort_four(t_stack_data *stack);
+void sort_five(t_stack_data *stack);
 #endif

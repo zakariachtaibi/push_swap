@@ -23,6 +23,5 @@ void pb(t_stack_data *stack_b, t_stack_data *stack_a)
     stack_a->size--;
     top_a->next = stack_b->head;
     stack_b->head = top_a;
-    
     stack_b->size++;
 }

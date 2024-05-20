@@ -25,6 +25,18 @@ int	ft_stack_size(t_stack *stack)
 	return (num);
 }
 
+t_stack_data *init_stack_data(void)
+{
+    t_stack_data *stack;
+
+    stack = (t_stack_data *)malloc(sizeof(t_stack_data));
+    if (stack == NULL)
+        return (NULL);
+    stack->head = NULL;
+    stack->size = 0;
+    return (stack);
+}
+
 void ft_clear_stack(t_stack_data *stack)
 {
     t_stack *temp;

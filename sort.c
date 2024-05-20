@@ -15,7 +15,11 @@
 void  sort(t_stack_data *stack)
 {
     if (stack->size == 2)
-        sa(stack);
+        ra(stack);
     else if (stack->size == 3)
         sort_three(stack);
+    else if (stack->size == 4)
+        sort_four(stack);
+    else if (stack->size == 5)
+        sort_five(stack);
 }

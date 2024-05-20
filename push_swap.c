@@ -98,8 +98,7 @@ int main(int ac, char **av)
 
 //         // sb(&stack_b);
 //         // pa(&stack_a, &stack_b);
-//         rb(&stack_b);
-//         rrb(&stack_b);
+//         pb(&stack_a, &stack_b);
 //         // rra(&stack_a);
 //         // pa(&stack_a, &stack_b);
 //         // pb(&stack_b, &stack_a);

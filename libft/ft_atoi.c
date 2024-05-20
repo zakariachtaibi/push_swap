@@ -35,6 +35,11 @@ int	ft_atoi(const char *nptr)
 	{
 		result *= 10;
 		result += (nptr[i] - '0');
+		if ((result > 2147483648 && sign < 0) || (result > 2147483647 && sign > 0))
+		{
+			write(1, "Error\n", 6);
+			exit(1);
+		}
 		i++;
 	}
 	return (result * sign);
