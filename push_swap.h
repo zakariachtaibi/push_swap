@@ -35,6 +35,7 @@ typedef struct s_stack_data
 void ft_error(char *msg);
 int	ft_stack_size(t_stack *stack);
 t_stack_data *init_stack_data(void);
+void ft_error(char *message);
 int ft_push(t_stack_data *stack, int value);
 t_stack *ft_fetch(t_stack_data *stack, int value);
 int ft_fill_stack(t_stack_data *stack, char **elements);
