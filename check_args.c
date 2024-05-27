@@ -93,17 +93,10 @@ int ft_fill_stack(t_stack_data *stack, char **elements)
     while (--index >= 0)
     {
         if (!ft_isdigits(elements[index]))
-<<<<<<< HEAD
-            ft_clear(stack, elements);
-        value = ft_atoi(elements[index]);
-        if (ft_fetch(stack, value))
-            ft_clear(stack, elements);
-=======
             return (0);
         value = ft_atoi(elements[index]);
         if (ft_fetch(stack, value))
             ft_error("Error\n");
->>>>>>> origin/master
         if (!ft_push(stack, value))
             ft_clear(stack, elements);
     }
