@@ -81,7 +81,7 @@ void sort_four(t_stack_data *stack)
     }
     sort_three(stack);
     pa(stack, stack_b);
-    ft_clear_stack(stack_b);
+    free(stack_b);
 }
 
 void sort_five(t_stack_data *stack)
@@ -108,5 +108,5 @@ void sort_five(t_stack_data *stack)
     }
     sort_four(stack);
     pa(stack, stack_b);
-    ft_clear_stack(stack_b);
+    free(stack_b);
 }

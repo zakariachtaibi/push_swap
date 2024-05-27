@@ -12,14 +12,19 @@
 
 #include "push_swap.h"
 
-void  sort(t_stack_data *stack)
+void  sort(t_stack_data *stack_a, t_stack_data *stack_b)
 {
-    if (stack->size == 2)
-        ra(stack);
-    else if (stack->size == 3)
-        sort_three(stack);
-    else if (stack->size == 4)
-        sort_four(stack);
-    else if (stack->size == 5)
-        sort_five(stack);
+    if (stack_a->size == 2)
+        sa(stack_a);
+    else if (stack_a->size == 3)
+        sort_three(stack_a);
+    else if (stack_a->size == 4)
+        sort_four(stack_a);
+    else if (stack_a->size == 5)
+        sort_five(stack_a);
+    else
+    {
+        send_to_stack_b(stack_a, stack_b);
+        send_to_stack_a(stack_a, stack_b);
+    }
 }

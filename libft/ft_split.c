@@ -53,12 +53,12 @@ static char	*allocate(char const *s, char c)
 	return (word);
 }
 
-static void	*free_split(char **str, size_t *j)
+static void	*free_split(char **str, size_t j)
 {
 	size_t	k;
 
 	k = 0;
-	while (k < *j)
+	while (k < j)
 	{
 		free(str[k]);
 		k++;
@@ -85,8 +85,9 @@ char	**ft_split(char const *s, char c)
 		if (s[i])
 		{
 			str[j] = allocate(&s[i], c);
-			if (!str[j++])
-				return (free_split(str, &j));
+			if (!str[j])
+				return (free_split(str, j));
+			j++;
 		}
 		while (s[i] && s[i] != c)
 			i++;
@@ -94,3 +95,4 @@ char	**ft_split(char const *s, char c)
 	str[j] = 0;
 	return (str);
 }
+

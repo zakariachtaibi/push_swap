@@ -24,4 +24,5 @@ void pb(t_stack_data *stack_b, t_stack_data *stack_a)
     top_a->next = stack_b->head;
     stack_b->head = top_a;
     stack_b->size++;
+    write(1, "pb\n", 3);
 }

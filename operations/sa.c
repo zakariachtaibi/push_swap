@@ -12,16 +12,23 @@
 
 #include "../push_swap.h"
 
-void sa(t_stack_data *stack_a)
+void swap(t_stack_data *stack)
 {
     t_stack *first;
     t_stack *second;
 
-    if (stack_a == NULL)
-		return ;
-    first = stack_a->head;
+    if (!stack || !stack->head || !stack->head->next)
+        return;
+
+    first = stack->head;
     second = first->next;
     first->next = second->next;
     second->next = first;
-    stack_a->head = second;
+    stack->head = second;
+}
+
+void sa(t_stack_data *stack_a)
+{
+    swap(stack_a);
+    write(1, "sa\n", 3);
 }

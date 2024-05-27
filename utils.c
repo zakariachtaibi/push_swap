@@ -12,6 +12,12 @@
 
 #include "push_swap.h"
 
+void ft_error(char *msg)
+{
+    write(2, msg, ft_strlen(msg));
+    exit(1);
+}
+
 int	ft_stack_size(t_stack *stack)
 {
 	int	num;
@@ -39,12 +45,15 @@ t_stack_data *init_stack_data(void)
 
 void ft_clear_stack(t_stack_data *stack)
 {
-    t_stack *temp;
-    while (stack->head)
+    t_stack *current = stack->head;
+    t_stack *next;
+    
+    while (current)
     {
-        temp = stack->head;
-        stack->head = stack->head->next;
-        free(temp);
+        next = current->next;
+        free(current);
+        current = next;
     }
+    stack->head = NULL;
     stack->size = 0;
 }

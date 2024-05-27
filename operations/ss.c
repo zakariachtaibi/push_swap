@@ -14,6 +14,7 @@
 
 void ss(t_stack_data *stack_a, t_stack_data *stack_b)
 {
-    sa(stack_a);
-    sb(stack_b);
+    swap(stack_a);
+    swap(stack_b);
+    write(1, "ss\n", 3);
 }

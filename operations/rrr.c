@@ -14,6 +14,7 @@
 
 void rrr(t_stack_data *stack_a, t_stack_data *stack_b)
 {
-    rra(stack_a);
-    rrb(stack_b);
+    reverse_rotate(stack_a);
+    reverse_rotate(stack_b);
+    write(1, "rrr\n", 4);
 }

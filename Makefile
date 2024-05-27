@@ -12,7 +12,7 @@
 
 NAME        := push_swap
 CC        := cc
-FLAGS    := -Wall -Wextra -Werror
+FLAGS    := -Wall -Wextra -Werror #-g -fsanitize=address
 
 SRCS        :=       push_swap.c \
                           check_args.c \
@@ -46,6 +46,8 @@ SRCS        :=       push_swap.c \
                             operations/rrr.c \
                             sort.c \
                             sort_utils.c \
+                            send_to_b.c \
+                            send_to_a.c \
                           
 OBJS        := $(SRCS:.c=.o)
 

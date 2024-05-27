@@ -24,4 +24,5 @@ void pa(t_stack_data *stack_a, t_stack_data *stack_b)
     top_b->next = stack_a->head;
     stack_a->head = top_b;
     stack_a->size++;
+    write(1, "pa\n", 3);
 }

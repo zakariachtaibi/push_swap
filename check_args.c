@@ -41,6 +41,17 @@ t_stack *ft_fetch(t_stack_data *stack, int value)
     return NULL;
 }
 
+void free_elements(char **split)
+{
+    int i = 0;
+    while (split[i])
+    {
+        free(split[i]);
+        i++;
+    }
+    free(split);
+}
+
 static int ft_isdigits(char *word)
 {
     size_t length;
@@ -59,6 +70,13 @@ static int ft_isdigits(char *word)
     return (1);
 }
 
+void ft_clear(t_stack_data *stack, char **elements)
+{
+    free_elements(elements);
+    ft_clear_stack(stack);
+    ft_error("Error\n");
+}
+
 int ft_fill_stack(t_stack_data *stack, char **elements)
 {
     int index = 0;
@@ -69,17 +87,14 @@ int ft_fill_stack(t_stack_data *stack, char **elements)
     while (--index >= 0)
     {
         if (!ft_isdigits(elements[index]))
-            return (0);
-        value = atoi(elements[index]);
+            ft_clear(stack, elements);
+        value = ft_atoi(elements[index]);
         if (ft_fetch(stack, value))
-            return (0);
+            ft_clear(stack, elements);
         if (!ft_push(stack, value))
-            return (0);
+            ft_clear(stack, elements);
     }
-    index = -1;
-    while (elements[++index])
-        free(elements[index]);
-    free(elements);
+    free_elements(elements);
     return (1);
 }
 
