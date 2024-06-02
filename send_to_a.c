@@ -38,9 +38,7 @@ static void check_first(t_stack_data *stack_a, t_stack_data *stack_b, int *flag)
             *flag = 1;
         }
         else
-        {
             rb(stack_b);
-        }
     }
     pa(stack_a, stack_b);
 }
@@ -56,9 +54,7 @@ static void check_second(t_stack_data *stack_a, t_stack_data *stack_b, int *flag
             *flag = 1;
         }
         else
-        {
             rrb(stack_b);
-        }
     }
     pa(stack_a, stack_b);
 }

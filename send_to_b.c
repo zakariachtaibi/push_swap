@@ -32,7 +32,7 @@ void send_to_stack_b(t_stack_data *stack_a, t_stack_data *stack_b)
 
     rem = -1;
     pivot1 = stack_a->size / 3;
-    pivot2 = pivot1 + stack_a->size / 6;
+    pivot2 = stack_a->size / 6;
 
     while (stack_a->size > 3)
     {

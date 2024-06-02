@@ -26,17 +26,6 @@ int	is_stack_sorted(t_stack *stack)
 	return (1);
 }
 
-void printNode(t_stack_data *stack)
-{
-    t_stack *node = stack->head;
-    while (node)
-    {
-        printf("value: %d, index: %d\n", node->data, node->index);
-        node = node->next;
-    }
-    printf("size: %d\n", stack->size);
-}
-
 int main(int ac, char **av)
 {
     t_stack_data stack_a;
@@ -51,7 +40,7 @@ int main(int ac, char **av)
         while (--ac > 0)
         {
             if (!ft_fill_stack(&stack_a, ft_split(av[ac], ' ')))
-                exit(0);
+                exit(1);
         }
         index_stack(stack_a.head);
         if (is_stack_sorted(stack_a.head))

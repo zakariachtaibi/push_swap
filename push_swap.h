@@ -31,7 +31,8 @@ typedef struct s_stack_data
     int     size;
 }               t_stack_data;
 
-
+void free_elements(char **split);
+void ft_clear(t_stack_data *stack, char **elements);
 void ft_error(char *msg);
 int	ft_stack_size(t_stack *stack);
 t_stack_data *init_stack_data(void);

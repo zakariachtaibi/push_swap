@@ -12,87 +12,75 @@
 
 #include "libft.h"
 
-static int	count_elements(char const *s, char c)
+static size_t	word_count(const char *str, char c)
 {
 	size_t	count;
+	size_t	i;
 
 	count = 0;
-	while (*s)
+	i = 0;
+	while (str[i])
 	{
-		while (*s && *s == c)
-			s++;
-		if (*s)
-		{
+		if ((str[i] != c) && ((str[i + 1] == c) || str[i + 1] == '\0'))
 			count++;
-			while (*s && *s != c)
-				s++;
-		}
+		i++;
 	}
 	return (count);
 }
 
-static char	*allocate(char const *s, char c)
+void	*free_all(char **sp)
 {
-	char	*word;
-	size_t	i;
-	size_t	len;
+	size_t	j;
 
-	i = 0;
-	len = 0;
-	while (s[len] && s[len] != c)
-		len++;
-	word = malloc(len + 1);
-	if (!word)
-		return (0);
-	while (i < len)
+	j = 0;
+	while (sp[j])
 	{
-		word[i] = s[i];
-		i++;
+		free(sp[j]);
+		j++;
 	}
-	word[i] = '\0';
-	return (word);
+	free(sp);
+	return (NULL);
 }
 
-static void	*free_split(char **str, size_t j)
+static void	fill_split(char **split, const char *s, char c)
 {
-	size_t	k;
+	size_t	i;
+	size_t	j;
+	size_t	wordlen;
 
-	k = 0;
-	while (k < j)
+	i = 0;
+	j = 0;
+	while (s[i])
 	{
-		free(str[k]);
-		k++;
+		if (s[i] == c)
+			i++;
+		else
+		{
+			wordlen = 0;
+			while (s[i + wordlen] && s[i + wordlen] != c)
+				wordlen++;
+			split[j] = malloc(wordlen + 1);
+			if (!split[j])
+				free_all(split);
+			ft_strlcpy(split[j], s + i, wordlen + 1);
+			i += wordlen;
+			j++;
+		}
 	}
-	free(str);
-	return (NULL);
+	split[j] = NULL;
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**str;
-	size_t	i;
-	size_t	j;
+	char	**split;
 
-	i = 0;
-	j = 0;
-	str = malloc(sizeof(char *) * (count_elements(s, c) + 1));
-	if (!str)
+	if (!s)
 		return (NULL);
-	while (s[i])
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		if (s[i])
-		{
-			str[j] = allocate(&s[i], c);
-			if (!str[j])
-				return (free_split(str, j));
-			j++;
-		}
-		while (s[i] && s[i] != c)
-			i++;
-	}
-	str[j] = 0;
-	return (str);
+	split = malloc((word_count(s, c) + 1) * sizeof(char *));
+	if (split == NULL)
+		return (NULL);
+	fill_split(split, s, c);
+	return (split);
 }
+
 
