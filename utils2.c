@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 23:43:08 by zchtaibi          #+#    #+#             */
-/*   Updated: 2024/06/02 18:42:08 by zchtaibi         ###   ########.fr       */
+/*   Created: 2024/06/02 18:38:46 by zchtaibi          #+#    #+#             */
+/*   Updated: 2024/06/02 18:40:14 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort(t_stack_data *stack_a, t_stack_data *stack_b)
+int	search_max(t_stack_data *stack_a)
 {
-	if (stack_a->size == 2)
-		sa(stack_a);
-	else if (stack_a->size == 3)
-		sort_three(stack_a);
-	else if (stack_a->size == 4)
-		sort_four(stack_a);
-	else if (stack_a->size == 5)
-		sort_five(stack_a);
-	else
+	t_stack	*tmp;
+	int		max;
+
+	tmp = stack_a->head;
+	max = tmp->index;
+	while (tmp)
 	{
-		send_to_stack_b(stack_a, stack_b);
-		send_to_stack_a(stack_a, stack_b);
+		if (tmp->index > max)
+			max = tmp->index;
+		tmp = tmp->next;
 	}
+	return (max);
 }

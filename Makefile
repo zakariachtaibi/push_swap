@@ -12,12 +12,13 @@
 
 NAME        := push_swap
 CC        := cc
-FLAGS    := -Wall -Wextra -Werror #-g -fsanitize=address
+FLAGS    := -Wall -Wextra -Werror -fsanitize=address
 
 SRCS        :=       push_swap.c \
                           check_args.c \
                           index_stack.c \
                           utils.c \
+                          utils2.c \
 						   libft/ft_atoi.c \
                           libft/ft_isdigit.c \
                           libft/ft_putchar_fd.c \

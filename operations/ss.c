@@ -12,9 +12,9 @@
 
 #include "../push_swap.h"
 
-void ss(t_stack_data *stack_a, t_stack_data *stack_b)
+void	ss(t_stack_data *stack_a, t_stack_data *stack_b)
 {
-    swap(stack_a);
-    swap(stack_b);
-    write(1, "ss\n", 3);
+	swap(stack_a);
+	swap(stack_b);
+	write(1, "ss\n", 3);
 }

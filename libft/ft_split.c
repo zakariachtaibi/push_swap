@@ -82,5 +82,3 @@ char	**ft_split(char const *s, char c)
 	fill_split(split, s, c);
 	return (split);
 }
-
-

@@ -6,14 +6,14 @@
 /*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 23:42:10 by zchtaibi          #+#    #+#             */
-/*   Updated: 2024/05/19 23:42:10 by zchtaibi         ###   ########.fr       */
+/*   Updated: 2024/06/02 18:27:15 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void rb(t_stack_data *stack_b)
+void	rb(t_stack_data *stack_b)
 {
-    rotate(stack_b);
-    write(1, "rb\n", 3);
+	rotate(stack_b);
+	write(1, "rb\n", 3);
 }

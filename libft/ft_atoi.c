@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void errornl(char *message)
+void	errornl(char *message)
 {
 	if (message)
 	{
@@ -45,7 +45,7 @@ int	ft_atoi(const char *nptr)
 			errornl("Error");
 		i++;
 	}
-	if(nptr[i])
+	if (nptr[i])
 		errornl("Error");
 	return (nbr * sign);
 }

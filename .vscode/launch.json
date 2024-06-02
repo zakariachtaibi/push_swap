@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "c:/Users/zakar/Desktop/myPush_swap",
-      "program": "c:/Users/zakar/Desktop/myPush_swap/build/Debug/outDebug",
+      "externalConsole": false,
+      "cwd": "/Users/zchtaibi/Desktop/push_swap",
+      "program": "/Users/zchtaibi/Desktop/push_swap/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -12,8 +12,8 @@
 
 #include "../push_swap.h"
 
-void sb(t_stack_data *stack_b)
+void	sb(t_stack_data *stack_b)
 {
-    swap(stack_b);
-    write(1, "sb\n", 3);
+	swap(stack_b);
+	write(1, "sb\n", 3);
 }
