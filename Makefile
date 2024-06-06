@@ -12,7 +12,7 @@
 
 NAME        := push_swap
 CC        := cc
-FLAGS    := -Wall -Wextra -Werror -fsanitize=address
+FLAGS    := -Wall -Wextra -Werror -g3
 
 SRCS        :=       push_swap.c \
                           check_args.c \

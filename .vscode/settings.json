@@ -57,6 +57,7 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
-    "pushswap.h": "c"
+    "pushswap.h": "c",
+    "push_swap.h": "c"
   }
 }

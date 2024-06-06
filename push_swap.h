@@ -6,7 +6,7 @@
 /*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 18:38:07 by zchtaibi          #+#    #+#             */
-/*   Updated: 2024/06/02 22:42:44 by zchtaibi         ###   ########.fr       */
+/*   Updated: 2024/06/06 21:29:08 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 typedef struct s_stack
 {
@@ -48,6 +49,7 @@ int					search_max(t_stack_data *stack_a);
 void				ft_create_stack(t_stack_data *stack);
 int					check_empty(char *str);
 void				ft_full_clear(t_stack_data *stack_a, t_stack_data *stack_b);
+void				ft_clear_digit(t_stack_data *stack, char **elements);
 
 // operations
 void				swap(t_stack_data *stack);

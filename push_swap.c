@@ -6,7 +6,7 @@
 /*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 18:38:10 by zchtaibi          #+#    #+#             */
-/*   Updated: 2024/06/02 22:38:59 by zchtaibi         ###   ########.fr       */
+/*   Updated: 2024/06/06 21:47:48 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ int	main(int ac, char **av)
 		while (--ac > 0)
 		{
 			if (!check_empty(av[ac]))
+			{
 				ft_error("Error\n");
+				ft_clear_stack(&stack_a);
+				exit(1);
+			}
 			if (!ft_fill_stack(&stack_a, ft_split(av[ac], ' ')))
 				exit(1);
 		}

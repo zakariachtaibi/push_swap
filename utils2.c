@@ -6,7 +6,7 @@
 /*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 18:38:46 by zchtaibi          #+#    #+#             */
-/*   Updated: 2024/06/02 22:41:08 by zchtaibi         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:59:30 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,19 @@ void	ft_create_stack(t_stack_data *stack)
 	stack->size = 0;
 }
 
+int	isspace(int c)
+{
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
+		|| c == '\r');
+}
+
 int	check_empty(char *str)
 {
-	if (!str || !*str)
-		return (0);
-	return (1);
+	while (*str)
+	{
+		if (!isspace(*str))
+			return (1);
+		str++;
+	}
+	return (0);
 }

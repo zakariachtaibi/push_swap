@@ -6,7 +6,7 @@
 /*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 23:42:34 by zchtaibi          #+#    #+#             */
-/*   Updated: 2024/06/02 22:01:12 by zchtaibi         ###   ########.fr       */
+/*   Updated: 2024/06/06 21:25:50 by zchtaibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_error(char *message)
 {
 	write(1, message, ft_strlen(message));
-	exit(1);
 }
 
 int	ft_push(t_stack_data *stack, int value)
@@ -46,7 +45,7 @@ t_stack	*ft_fetch(t_stack_data *stack, int value)
 	return (NULL);
 }
 
-static int	ft_isdigits(char *word)
+static bool	ft_isdigits(char *word)
 {
 	size_t	length;
 	size_t	index;
@@ -54,14 +53,14 @@ static int	ft_isdigits(char *word)
 	length = ft_strlen(word);
 	index = 0;
 	if (!word)
-		return (0);
+		return (false);
 	while (index < length)
 	{
 		if (!ft_isdigit(word[index]))
-			ft_error("Error\n");
+			return (false);
 		index++;
 	}
-	return (1);
+	return (true);
 }
 
 int	ft_fill_stack(t_stack_data *stack, char **elements)
@@ -75,10 +74,16 @@ int	ft_fill_stack(t_stack_data *stack, char **elements)
 	while (--index >= 0)
 	{
 		if (!ft_isdigits(elements[index]))
+		{
+			ft_clear(stack, elements);
 			exit(1);
+		}
 		value = ft_atoi(elements[index]);
 		if (ft_fetch(stack, value))
+		{
 			ft_clear(stack, elements);
+			exit(1);
+		}
 		if (!ft_push(stack, value))
 			ft_clear(stack, elements);
 	}
