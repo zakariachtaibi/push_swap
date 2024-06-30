@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 23:42:34 by zchtaibi          #+#    #+#             */
-/*   Updated: 2024/06/06 21:25:50 by zchtaibi         ###   ########.fr       */
+/*   Updated: 2024/06/30 16:05:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	ft_fill_stack(t_stack_data *stack, char **elements)
 			ft_clear(stack, elements);
 			exit(1);
 		}
-		value = ft_atoi(elements[index]);
+		value = ft_atoi_plus(elements[index], stack, elements);
 		if (ft_fetch(stack, value))
 		{
 			ft_clear(stack, elements);

@@ -19,7 +19,7 @@ SRCS        :=       push_swap.c \
                           index_stack.c \
                           utils.c \
                           utils2.c \
-						   libft/ft_atoi.c \
+                          utils3.c \
                           libft/ft_isdigit.c \
                           libft/ft_putchar_fd.c \
                           libft/ft_putendl_fd.c \

@@ -3,26 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 15:29:47 by zchtaibi          #+#    #+#             */
-/*   Updated: 2024/06/06 21:28:57 by zchtaibi         ###   ########.fr       */
+/*   Updated: 2024/06/30 16:04:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	errornl(char *message)
-{
-	if (message)
-	{
-		write(1, message, ft_strlen(message));
-		write(1, "\n", 1);
-	}
-	exit(1);
+void free_el(char **elements) {
+    int i = 0;
+    if (elements) {
+        while (elements[i]) {
+            free(elements[i]);
+            i++;
+        }
+        free(elements);
+    }
 }
 
-int	ft_atoi(const char *nptr)
+void errornl(const char *msg, char **elements) {
+    write(1, msg, ft_strlen(msg));
+    free_el(elements);
+    exit(1);
+}
+
+int	ft_atoi(const char *nptr, char **elements)
 {
 	int		i;
 	int		sign;
@@ -37,15 +44,15 @@ int	ft_atoi(const char *nptr)
 		if (nptr[i++] == '-')
 			sign = -sign;
 	if (nptr[i] < '0' || nptr[i] > '9')
-		errornl("Error");
+		errornl("Error\n", elements);
 	while (nptr[i] && nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		nbr = nbr * 10 + (nptr[i] - '0');
 		if ((nbr > 2147483648 && sign == -1) || (nbr > 2147483647 && sign == 1))
-			errornl("Error");
+			errornl("Error\n", elements);
 		i++;
 	}
 	if (nptr[i])
-		errornl("Error");
+		errornl("Error\n", elements);
 	return (nbr * sign);
 }

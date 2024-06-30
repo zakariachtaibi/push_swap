@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 13:20:25 by zchtaibi          #+#    #+#             */
-/*   Updated: 2024/06/06 21:21:56 by zchtaibi         ###   ########.fr       */
+/*   Updated: 2024/06/30 16:12:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	ft_clear(t_stack_data *stack, char **elements)
 {
-	free_elements(elements);
 	ft_clear_stack(stack);
+	free_elements(elements);
 	ft_error("Error\n");
-	// exit(1);
 }
 
 void	free_elements(char **split)

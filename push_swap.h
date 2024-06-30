@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 18:38:07 by zchtaibi          #+#    #+#             */
-/*   Updated: 2024/06/06 21:29:08 by zchtaibi         ###   ########.fr       */
+/*   Updated: 2024/06/30 16:05:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_stack_data
 }					t_stack_data;
 
 // utils
+int	ft_atoi_plus(const char *nptr, t_stack_data *stack, char **elements);
 void				free_elements(char **split);
 void				ft_clear(t_stack_data *stack, char **elements);
 void				ft_error(char *msg);
