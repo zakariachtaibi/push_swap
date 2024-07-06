@@ -12,21 +12,27 @@
 
 #include "libft.h"
 
-void free_el(char **elements) {
-    int i = 0;
-    if (elements) {
-        while (elements[i]) {
-            free(elements[i]);
-            i++;
-        }
-        free(elements);
-    }
+void	free_el(char **elements)
+{
+	int	i;
+
+	i = 0;
+	if (elements)
+	{
+		while (elements[i])
+		{
+			free(elements[i]);
+			i++;
+		}
+		free(elements);
+	}
 }
 
-void errornl(const char *msg, char **elements) {
-    write(1, msg, ft_strlen(msg));
-    free_el(elements);
-    exit(1);
+void	errornl(const char *msg, char **elements)
+{
+	write(1, msg, ft_strlen(msg));
+	free_el(elements);
+	exit(1);
 }
 
 int	ft_atoi(const char *nptr, char **elements)

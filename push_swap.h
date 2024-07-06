@@ -14,10 +14,10 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdbool.h>
 
 typedef struct s_stack
 {
@@ -33,7 +33,8 @@ typedef struct s_stack_data
 }					t_stack_data;
 
 // utils
-int	ft_atoi_plus(const char *nptr, t_stack_data *stack, char **elements);
+int					ft_atoi_plus(const char *nptr, t_stack_data *stack,
+						char **elements);
 void				free_elements(char **split);
 void				ft_clear(t_stack_data *stack, char **elements);
 void				ft_error(char *msg);

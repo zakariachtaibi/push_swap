@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils3.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zchtaibi <zchtaibi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/06 01:25:39 by zchtaibi          #+#    #+#             */
+/*   Updated: 2024/07/06 01:35:33 by zchtaibi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void ft_error_plus(const char *message, t_stack_data *stack, char **elements) {
-    if (message)
-        write(1, message, ft_strlen(message));
-    if (stack)
-        ft_clear_stack(stack);
-    if (elements)
-        free_elements(elements);
-    exit(1);
+void	ft_error_plus(const char *message, t_stack_data *stack, char **elements)
+{
+	if (message)
+		write(1, message, ft_strlen(message));
+	if (stack)
+		ft_clear_stack(stack);
+	if (elements)
+		free_elements(elements);
+	exit(1);
 }
 
 int	ft_atoi_plus(const char *nptr, t_stack_data *stack, char **elements)
